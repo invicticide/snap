@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es5",
+		"declaration": true,
+		"inlineSourceMap": true,
+		"outDir": "lib",
+		"removeComments": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"alwaysStrict": true,
+		"noEmitOnError": true
+	},
+	"include": [
+		"src/**/*.ts"
+	]
+}

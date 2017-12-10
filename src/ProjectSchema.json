@@ -1,0 +1,62 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"title": "Snap Project",
+	"description": "",
+	"type": "object",
+	"properties": {
+		"markdown": {
+			"type": "array",
+			"items": { "type": "string" },
+			"uniqueItems": true,
+			"description": "List of glob-style patterns for locating Markdown source files. These are compiled in the order in which they appear."
+		},
+		"javascript": {
+			"type": "array",
+			"items": { "type": "string" },
+			"uniqueItems": true,
+			"description": "List of glob-style patterns for locating Javascript files reside. These are imported in the order in which they appear."
+		},
+		"assets": {
+			"type": "array",
+			"items": { "type": "string" },
+			"uniqueItems": true,
+			"description": "List of glob-style patterns for locating additional asset files. These are imported in the order in which they appear."
+		},
+		"ignore": {
+			"type": "array",
+			"items": { "type": "string" },
+			"uniqueItems": true,
+			"description": "List of glob-style patterns for files to ignore. Ignores are applied when searching for Markdown files, Javascript files, and asset files."
+		},
+		"aliases": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"alias": { "type": "string" },
+					"replaceWith": { "type": "string" },
+					"end": { "type": "string" }
+				}
+			},
+			"uniqueItems": true,
+			"description": ""
+		},
+		"template": { "type": "string", "description": "The HTML template file to use for the final story output" },
+		"output": { "type": "string", "description": "The folder where the final story files will be saved" },
+		"outputFormat": { "enum": [ "prettify", "minify", "default" ], "description": "Options: 'minify' to minify the final story HTML (reduces file size but makes the HTML source much less human-readable), 'prettify' to prettify the final story HTML into human-readable HTML, 'default' for no additional processing"  },
+		"linkTags": {
+			"type": "object",
+			"description": "Raw HTML to be inserted at the end of different Snap link types.",
+			"properties": {
+				"external": {
+					"type": "object",
+					"properties": {
+						"html": { "type": "string", "description": "Tag for external links." },
+						"prepend": { "type": "boolean", "description": "If true, place the tag before the link. If false, place it after the link." }
+					}
+				}
+			}
+		}
+	},
+	"additionalProperties": false
+}

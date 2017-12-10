@@ -1,0 +1,45 @@
+{
+  "name": "snap",
+  "version": "1.0.2",
+  "description": "Snap is a simple static site generator that turns Markdown into HTML",
+  "keywords": [
+    "web development",
+    "static site",
+    "hypertext"
+  ],
+  "license": "AGPL-3.0+",
+  "author": "Josh Sutphin <josh@kickbomb.us> (http://kickbomb.us)",
+  "homepage": "https://github.com/invicticide/snap#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/invicticide/snap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/invicticide/snap/issues"
+  },
+  "main": "lib/Main.js",
+  "types": "lib/Main.d.ts",
+  "devDependencies": {
+    "@types/node": "^8.0.28",
+    "typescript": ">=2.6.0"
+  },
+  "dependencies": {
+    "ajv": "^5.3.0",
+    "cli-color": "^1.2.0",
+    "commonmark": ">=0.28.1",
+    "globby": "^7.1.1",
+    "html-minifier": ">=3.5.5",
+    "js-beautify": "^1.7.4",
+    "json-override": "^0.2.0",
+    "json-schema-to-typescript": "^5.1.0",
+    "source-map-support": "^0.5.0"
+  },
+  "scripts": {
+    "build": "node build/Build.js",
+    "build-verbose": "node build/Build.js --verbose",
+    "build-dry": "node build/Build.js --dry-run",
+    "build-debug": "node build/Build.js --debug --verbose",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
