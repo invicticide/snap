@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /*
 Snap: A simple static site generator -- https://github.com/invicticide/snap
 Copyright (C) 2017 Josh Sutphin

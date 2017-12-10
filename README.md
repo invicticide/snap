@@ -10,22 +10,9 @@ Snap is licensed under [AGPL-3.0+](https://github.com/invicticide/snap/blob/dev/
 
 Install [node.js](https://nodejs.org) by downloading it and running the installer. (Snap is currently developed on version 8.9.0 LTS.)
 
-Verify node and npm:
+Install Snap:
 
-	node -v
-	npm -v
-
-Clone the Snap repository:
-
-	mkdir snap
-	git clone git@github.com:invicticide/snap.git snap
-
-(If you plan on contributing to Snap, create a GitHub fork and clone that instead.)
-
-Install dependencies and build Snap:
-
-	cd snap
-	npm install
+	npm install -g snap
 
 ## Snap projects
 
@@ -35,13 +22,11 @@ Snap projects can also contain Javascript (.js) files and additional assets (ima
 
 You can create a new project like this:
 
-	cd snap
-	node lib/CLI.js create ../my-project
-	cd ../my-project
+	snap create path/to/my/site
 
 In the new project folder you'll see a structure like this:
 
-	my-project
+	site
 	|- assets/
 	|- source/
 	|- snap.json
@@ -120,39 +105,25 @@ You can also style your site with custom CSS; just source or embed it with `<sty
 
 ## Publishing
 
-When you're ready to share or test your site, you need to publish it.
+When you're ready to share or test your site, you need to publish it:
 
-On Windows:
+	snap compile path/to/my/site
 
-	cd snap
-	publish.bat path/to/site/directory
-
-On Mac/*nix:
-
-	cd snap
-	./publish.sh path/to/site/directory
-
-The publish script will compile all Markdown, Javascript, and asset files in the given story folder and spit out HTML, Javascript, and asset files in the `output` directory defined in your `snap.json`. Simply open the output `index.html` in a browser to test, or upload it to your web server to publish it to the world.
+Snap will compile all Markdown, Javascript, and asset files in the given story folder and spit out HTML, Javascript, and asset files in the `output` directory defined in your `snap.json`. Simply open the output `index.html` in a browser to test, or upload it to your web server to publish it to the world.
 
 If you specify a directory, Snap will look for a `snap.json` at that location, and use the settings it finds there to build the site. If you specify a path to a .json file, Snap will use that as the project file instead.
 
 ## Contributing
-
-Please be sure to read the [contribution guidelines](https://github.com/invicticide/snap/blob/dev/.github/contributing.md), the [style guide](https://github.com/invicticide/snap/blob/dev/.github/code_style.md), and the [code of conduct](https://github.com/invicticide/snap/blob/dev/.github/code_of_conduct.md) before submitting any pull requests. Also, check the [roadmap](https://github.com/invicticide/snap/blob/dev/.github/roadmap.md) to see what's currently planned.
 
 Fork the Snap repo on GitHub, then clone your fork:
 
 	mkdir snap
 	git clone git@github.com:path/to/your/fork.git snap
 
-Install dependencies:
+Install dependencies (this will also build Snap for the first time):
 
 	cd snap
 	npm install
-
-Build changes:
-
-	npm run build
 
 Snap requires TypeScript 2.6, which is installed as a default dependency when you do `npm install` and invoked when you do `npm run build`. If you have a separate global install of TypeScript (e.g. at one point you did `npm install -g typescript`) you could also compile your changes by just doing `tsc` provided your global install is at least version 2.6. On Mac and *nix, you can use `which tsc` to find your global install, or on Windows, open the Node.js command prompt and do `where tsc`. That said, it's strongly recommended to just use `npm run build` instead. ;)
 
@@ -166,16 +137,8 @@ Then install it locally into your site project:
 	cd path/to/site
 	npm install path/to/snap/snap-x.x.x.tgz
 
-Then rebuild your story project.
+Then rebuild your story project:
 
-On Windows:
-
-	cd snap
-	publish.bat path/to/site
-
-On Mac/*nix:
-
-	cd snap
-	./publish.sh path/to/site
+	./node_modules/.bin/snap compile .
 
 And finally, launch the resulting `index.html` and perform your tests.
